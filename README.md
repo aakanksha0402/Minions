@@ -12,11 +12,11 @@ Things implemented yet:
 
 Things to be implemented: (Note everything you want to implement and try out here)
 
-*
+* Needs fixes in Search Index Page
 
-Dependencies:
+In-Progress
 
-* Ruby 2.3.1
+* Searching with UI
 
 * Rails 5.0.1
 
