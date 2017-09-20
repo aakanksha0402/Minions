@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Minions</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= text_field_tag "search-field", nil, placeholder: "Search", autocomplete: 'off', spellcheck: false, data: {url: search_index_path(format: :json)} %>
+
+    <ul class="dropdown results" id='search-results'>
+    </ul>
+    <%= yield %>
+  </body>
+</html>
