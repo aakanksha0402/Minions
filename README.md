@@ -14,6 +14,8 @@ Things to be implemented: (Note everything you want to implement and try out her
 
 * Needs fixes in Search Index Page
 
+* Use serialize method
+
 In-Progress
 
 * Searching with UI
