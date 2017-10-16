@@ -10,6 +10,8 @@ Things implemented yet:
 
 * Real-time search based on triagam. Needs fixes.
 
+* Integrate Google CAPTCHA
+
 Things to be implemented: (Note everything you want to implement and try out here)
 
 * Needs fixes in Search Index Page
