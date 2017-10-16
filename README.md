@@ -12,6 +12,8 @@ Things implemented yet:
 
 * Integrate Google CAPTCHA
 
+* Integrate Gravatar
+
 Things to be implemented: (Note everything you want to implement and try out here)
 
 * Needs fixes in Search Index Page
