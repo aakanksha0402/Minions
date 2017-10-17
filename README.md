@@ -8,21 +8,23 @@ Things implemented yet:
 
 * Many-to-Many association between books and authors. The books_authors is a join table. Note how the records are created
 
-* Real-time search based on triagam. Needs fixes.
+* Real-time search based on triagam. Work on Serach index in progess
+
+Things to be implemented: (Note everything you want to implement and try out here)
+
+* Search on multiple models
+
+* Use serialize method
 
 * Integrate Google CAPTCHA
 
 * Integrate Gravatar
 
-Things to be implemented: (Note everything you want to implement and try out here)
-
-* Needs fixes in Search Index Page
-
-* Use serialize method
+* All modules of Devise
 
 In-Progress
 
-* Searching with UI
+* Index Page of Search
 
 * Rails 5.0.1
 

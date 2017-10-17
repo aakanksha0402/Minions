@@ -1,6 +1,8 @@
 const NavController = function() {
   let searchField = $('#search-field');
   let searchResults = $('#search-results');
+  let escape, selected;
+  let links = searchResults.find('a');
   const SEARCH_API = searchField.data("url");
 
   searchField.keydown(function(e){
@@ -61,7 +63,7 @@ const NavController = function() {
     return encodeURIComponent(str).replace(/%20/g, '+');
   }
 
-  function debounce(fn, delay) {    
+  function debounce(fn, delay) {
     let timer = null;
     return function() {
         let context = this, args = arguments;
