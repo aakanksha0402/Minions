@@ -15,5 +15,14 @@
   <%= @book.type %>
 </p>
 
+<b>Authors</b>
+
+<% @book.authors.each do |author| %>
+  <p>
+    <strong>Name:</strong>
+    <%= link_to author.name, author_path(author) %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
