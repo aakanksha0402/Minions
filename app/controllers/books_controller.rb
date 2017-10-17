@@ -10,6 +10,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    add_breadcrumb "index", books_path, :title => "Back to the Index"
   end
 
   # GET /books/new

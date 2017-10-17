@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <%= render_breadcrumbs :tag => :li, :separator => "" %>
+
     <%= text_field_tag "search-field", nil, placeholder: "Search", autocomplete: 'off', spellcheck: false, data: {url: search_index_path(format: :json)} %>
 
     <ul class="dropdown results" id='search-results'>
