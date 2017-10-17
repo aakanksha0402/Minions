@@ -1,2 +1,38 @@
-<h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
+<h1>Total results <%= @results.length.to_s %></h1>
+
+<ul>
+  <% SearchController::FILTERS.each do |f| %>
+    <li>
+      <% if f == @filter %>
+        <strong><%= f.humanize %></strong>
+        <%= link_to f.humanize, search_index_path(filter: f, query: @query) %>
+      <% else %>
+        <%= link_to f.humanize, search_index_path(filter: f, query: @query) %>
+        <label><%= @counts[f] %></label>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @results.length > 0 %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Modified</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |result| %>
+        <tr>
+          <td><%= link_to result[:name], result[:url] %></td>
+          <td><%= result[:description] %></td>
+          <td><%= result[:modified] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No results found.</p>
+<% end %>

@@ -3,17 +3,25 @@ class SearchController < ApplicationController
 
   def index
     @query = params[:q]
+    @filter = params[:filter]
     @counts = {}
     limit = params[:limit] ? params[:limit].to_i : nil
 
-    @results = FILTERS.inject([]) do |sum, g|
-      objs = self.send(g, @query, limit).map { |o| hash_for(o, g) }
-      @counts[g] = objs.count
-      limit -= objs.length if limit
-      sum.push(*objs)
+    if FILTERS.include?(@filter)
+      @results = self.send(@filter, @query, limit, request.query_parameters)
+        .map { |o| hash_for(o, @filter) }
+      if request.format.html?
+        @counts = FILTERS.map { |f| [f, self.send(f, @query, nil).count] }.to_h
+      end
+    else
+      @results = FILTERS.inject([]) do |sum, g|
+        objs = self.send(g, @query, limit).map { |o| hash_for(o, g) }
+        @counts[g] = objs.count
+        limit -= objs.length if limit
+        sum.push(*objs)
+      end
     end
 
-    # @results = Book.all
     respond_to do |format|
       format.html
       format.json { render json: @results.to_json }
