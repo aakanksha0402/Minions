@@ -3,7 +3,7 @@ const NavController = function() {
   let searchResults = $('#search-results');
   const SEARCH_API = searchField.data("url");
 
-  searchField.keyup(function(e){
+  searchField.keydown(function(e){
     switch (e.keyCode) {
     case 13:
         if (links[selected]) {links[selected].click();}
@@ -25,7 +25,9 @@ const NavController = function() {
     e.preventDefault();
   });
 
-  searchField.on('keyup', _.debounce(function (e) {
+  searchField.on('keyup', debounce(search, 100));
+
+  function search(e) {
     if (e.which > 8 && e.which < 48 || e.which === 90 || e.which === 91) {
       return false;
     } else if (this.value.length < 3) {
@@ -37,8 +39,8 @@ const NavController = function() {
     let url = `${SEARCH_API}?q=${q}`;
     $.get( url, function(data){
       let searchURL = `/search?q=${encode(searchField.val())}`;
-      searchResults.innerHTML = '';
-      searchResults.append(link(`Search for '${searchField.val()}'`, searchURL));
+      searchResults.html('');
+      searchResults.append(link(`Search for '${searchField.val()}'`, searchURL, 'selected'));
       selected = 0;
       let results = data;
       if (!results.length) return;
@@ -47,7 +49,7 @@ const NavController = function() {
         searchResults.append(link(results[j].name, results[j].url));
       }
     });
-  }, 300));
+  }
 
   function link(text, url, classname = '') {
     let a = '<a href='+ url +' class='+ classname + '>'+ text +'</a>'
@@ -57,5 +59,16 @@ const NavController = function() {
 
   function encode(str) {
     return encodeURIComponent(str).replace(/%20/g, '+');
+  }
+
+  function debounce(fn, delay) {    
+    let timer = null;
+    return function() {
+        let context = this, args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            fn.apply(context, args);
+        }, delay);
+    }
   }
 };
