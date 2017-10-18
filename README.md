@@ -8,7 +8,7 @@ Things implemented yet:
 
 * Many-to-Many association between books and authors. The books_authors is a join table. Note how the records are created
 
-* Real-time search based on triagam. Search on multiple models and Index Page of Search [Done]
+* Real-time search based on triagam. Search on multiple models and Index Page of Search; Branch: `Searching` (deleted) [Done]
 
 * Integrate Gravatar; Branch: `gravatar` [Done]
 
@@ -16,16 +16,17 @@ Things to be implemented: (Note everything you want to implement and try out her
 
 * Use serialize method
 
-* Integrate Google CAPTCHA
-
 * Auto deploy to Heroku
 
 * All modules of Devise
 
 * Project Management on Git
 
+* Google Analytics
+
 In-Progress
 
+* Integrate Google CAPTCHA
 
 Mandatory:
 

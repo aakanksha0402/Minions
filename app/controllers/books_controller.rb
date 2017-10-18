@@ -29,7 +29,7 @@ class BooksController < ApplicationController
     @book.reviews << Review.new(name: Faker::StarWars.wookiee_sentence)
 
     respond_to do |format|
-      if @book.save
+      if verify_recaptcha(model: @book) && @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
