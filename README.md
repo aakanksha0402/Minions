@@ -10,6 +10,8 @@ Things implemented yet:
 
 * Real-time search based on triagam. Search on multiple models and Index Page of Search [Done]
 
+* Integrate Gravatar; Branch: `gravatar` [Done]
+
 Things to be implemented: (Note everything you want to implement and try out here)
 
 * Use serialize method
@@ -24,7 +26,6 @@ Things to be implemented: (Note everything you want to implement and try out her
 
 In-Progress
 
-* Integrate Gravatar; Branch: `gravatar`
 
 Mandatory:
 
