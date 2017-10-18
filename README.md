@@ -12,6 +12,8 @@ Things implemented yet:
 
 * Integrate Gravatar; Branch: `gravatar` [Done]
 
+* Integrate Google CAPTCHA; Branch: `captcha` [Done]
+
 Things to be implemented: (Note everything you want to implement and try out here)
 
 * Use serialize method
@@ -25,8 +27,6 @@ Things to be implemented: (Note everything you want to implement and try out her
 * Google Analytics
 
 In-Progress
-
-* Integrate Google CAPTCHA
 
 Mandatory:
 
