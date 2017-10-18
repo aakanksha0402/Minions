@@ -1,9 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @author.dynamic_identicon(:small) %>
+</p>
+<p>
   <strong>Name:</strong>
   <%= @author.name %>
 </p>
+
+<b>Books by this author</b>
+<% @author.books.each do |book| %>
+  <p>
+    <%= link_to book.title, book_path(book) %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>
