@@ -37,7 +37,12 @@ gem 'jbuilder', '~> 2.5'
 
 # create fake data for seeding
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+
+# For Debounce
 gem 'underscore-rails'
+
+# Generate github like identicons
+gem 'identicon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
