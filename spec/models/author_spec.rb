@@ -4,8 +4,12 @@ RSpec.describe Author, type: :model do
 
   let(:author) { FactoryBot.create(:author) }
 
-  describe "associations" do
-    it { should have_and_belongs_to_many(:books) }
+  describe 'associations' do
+    it { is_expected.to have_and_belong_to_many(:books) }
+  end
+
+  it 'has valid factory' do
+    expect(author).to be_valid
   end
 
 end

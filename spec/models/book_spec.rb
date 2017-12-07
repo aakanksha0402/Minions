@@ -4,12 +4,23 @@ RSpec.describe Book, type: :model do
 
   let(:book) { FactoryBot.create(:book) }
 
-  describe "associations" do
-    it "puts" do
-
-      puts book.as_json
-      puts book.authors.as_json
-    end
-    it { should have_and_belongs_to_many(:authors) }
+  before(:each) do
+    book.authors << FactoryBot.create(:author)
+    @authors = book.authors
   end
+
+  describe "associations" do
+    it { is_expected.to have_and_belong_to_many(:authors) }
+  end
+
+  it 'has valid factory' do
+    p "********", book
+    expect(book).to be_valid
+  end
+
+  it 'has associated authors' do
+    p @authors
+    expect(@authors.count).to eq(1)
+  end
+
 end

@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :author do
-    name "Faker::GameOfThrones.dragon"
-    association :books
+    name "GameOfThrones.dragon"
   end
 end
