@@ -28,12 +28,20 @@
 
   <div class="field">
     <%= f.label :authors %>
-    <%= f.collection_select :author_ids, Author.all, :id, :name, {}, {:multiple => true, class: 'select2'} %>
+    <%#= f.collection_select :author_ids, Author.all, :id, :name, {}, {:multiple => true, class: 'select2'} %>
+    <%= f.text_field :author_ids %>
   </div>
 
   <%= recaptcha_tags %>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+
+  new TokenField(id('book_author_ids'), '#{search_index_path(:books, format: :json)}',
+      {multiple: true, values: null})
+
+</script>

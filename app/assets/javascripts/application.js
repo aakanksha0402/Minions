@@ -16,5 +16,6 @@
 //= require twitter/bootstrap
 //= require underscore
 //= require search
+//= require token_field
 //= require init
 //= require_tree .
