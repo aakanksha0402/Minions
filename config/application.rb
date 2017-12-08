@@ -23,5 +23,9 @@ module Minions
       ENV[key.to_s] = value
     end if File.exists?(creds_file)
 
+
+    config.generators do |g|
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
   end
 end

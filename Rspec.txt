@@ -1,0 +1,129 @@
+Gemfile
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-activemodel-mocks', '= 1.0.1'
+  gem 'rspec-collection_matchers'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers', '= 2.8.0'
+end
+
+group :test do
+  gem "factory_bot_rails"
+  gem 'database_cleaner'
+end
+
+rails generate rspec:install
+
+application.rb configuration
+
+config.generators do |g|
+  g.fixture_replacement :factory_bot, dir: "spec/factories"
+end
+
+Generate spec/model for existing model:
+	- rails g rspec:model User
+	- rails g rspec:controller User
+  - rails g factory_bot:model User email username first_name last_name phone admin:boolean
+
+  Example of Factory:::
+  =====================
+
+  FactoryBot.define do
+    factory :appointment do
+      length "60"
+      association :lesson
+      association :student
+      association :recurring_invoice_line
+      status "confirmed"
+      notes "Test note"
+      date_time Time.now
+      end_time (Time.now + 3.days)
+      recurring 1
+    end
+  end
+
+  Example of factory_model:::
+  ===========================
+
+  require 'rails_helper'
+
+  describe Appointment, type: :model do
+    let(:appointment) { FactoryBot.create(:appointment) }
+
+    describe "associations" do
+
+      it { should belong_to(:lesson) }
+      it { should belong_to(:student) }
+      it { should belong_to(:recurring_invoice_line) }
+      it { expect(appointment).to have_one :invoice_line }
+      it { expect(appointment).to have_one :teacher }
+
+    end
+  end
+
+  Example of factory_controller:::
+  ================================
+
+  require 'rails_helper'
+
+  describe Schools::LessonsController, type: :controller do
+    login_verified_teacher
+    before(:each) do
+      @lesson = FactoryBot.create(:lesson)
+      @student = FactoryBot.create(:student)
+      @teacher = FactoryBot.create(:teacher)
+      @schools = School.all
+    end
+
+    describe '#index' do
+      context 'when schools are present' do
+        it 'should present school lesson' do
+          lesson = @lesson
+          expect(lesson).to be_valid
+        end
+
+      end
+    end
+
+    describe '#create' do
+
+      it "new" do
+        get :new do
+          it_should_render_template :new
+        end
+      end
+
+      context 'when valid params' do
+
+        let(:params) { {
+          title: "New lesson",
+          description: "testing",
+          company_name: "narola",
+          teacher_id: @teacher.id,
+          student_id: @student.id,
+          location: "Zwanenplein 34",
+          days_to_pay: 2
+        }
+        }
+
+        it "when valid params, create new lesson" do
+          post :create, params: { lesson: params }
+
+          redirect_to schools_lessons_path
+        end
+
+      end
+    end
+
+    describe "PUT update/:id" do
+
+      before(:each) do
+        put :update, params: {id: @lesson.id, lesson: {title: "updated title"}}
+        @lesson.reload
+      end
+
+      it {expect(response).to redirect_to(schools_lessons_path) }
+    end
+
+  end
