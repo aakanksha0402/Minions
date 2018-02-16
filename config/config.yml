@@ -1,0 +1,11 @@
+default: &default
+  twilio_account_sid: 'AC5ec1504919cb840a3b77bc84cfd1681d'
+  twilio_auth_token: 'd483e88af946d861e319d31669afb5ec'
+
+
+development:
+  <<: *default
+
+
+production: &production
+  <<: *default

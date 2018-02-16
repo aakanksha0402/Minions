@@ -2256,3 +2256,306 @@ Processing by SearchController#index as JSON
 Completed 200 OK in 24ms (Views: 0.1ms | ActiveRecord: 2.7ms)
 
 
+  [1m[35m (165.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (88.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (22.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7524440956083449370);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBooks (20170919113644)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (104.8ms)[0m  [1m[35mCREATE TABLE "books" ("id" serial primary key, "title" character varying, "page_number" character varying, "type" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170919113644"]]
+  [1m[35m (24.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAuthors (20170919113726)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (68.9ms)[0m  [1m[35mCREATE TABLE "authors" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "authors_books" ("author_id" integer, "book_id" integer)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170919113726"]]
+  [1m[35m (14.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20170920072510)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (83.4ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "name" character varying, "book_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_924a0b30ca"
+FOREIGN KEY ("book_id")
+  REFERENCES "books" ("id")
+)[0m
+  [1m[35m (56.0ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_book_id" ON "reviews"  ("book_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170920072510"]]
+  [1m[35m (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-02-16 13:02:31.649528"], ["updated_at", "2018-02-16 13:02:31.649528"]]
+  [1m[35m (30.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7524440956083449370)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 19:58:20 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/application
+  Rendered twilios/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 2290ms (Views: 2257.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 19:59:47 +0530
+  
+SyntaxError (/home/anand/Minions/app/controllers/twilios_controller.rb:2: syntax error, unexpected ':', expecting keyword_end
+	layout: false
+	       ^):
+  
+app/controllers/twilios_controller.rb:2: syntax error, unexpected ':', expecting keyword_end
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (39.0ms)
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:00:07 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb
+  Rendered twilios/index.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:12:32 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+SyntaxError (/home/anand/Minions/app/controllers/twilios_controller.rb:2: syntax error, unexpected ':', expecting keyword_end
+	layout: 'twilio'
+	       ^):
+  
+app/controllers/twilios_controller.rb:2: syntax error, unexpected ':', expecting keyword_end
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.4ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.2ms)
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.5ms)
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:13:54 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (0.4ms)
+Completed 200 OK in 298ms (Views: 296.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:14:39 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (0.7ms)
+Completed 200 OK in 7133ms (Views: 7123.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:47:15 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (14.8ms)
+Completed 200 OK in 4742ms (Views: 4717.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:48:03 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (4.4ms)
+Completed 200 OK in 131ms (Views: 127.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:48:05 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (1.4ms)
+Completed 200 OK in 139ms (Views: 138.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 20:50:08 +0530
+Processing by TwiliosController#verify_phone as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B9UAvFOXn8+ltTrzR0zu/98T4kZ+xBoIcZrbLv2oIBKKKEnRJS0x0yGR0J+/q+/mRhdHSB3eYDPtdJbYLkcpMw==", "phone_no"=>"9555114655"}
+No template found for TwiliosController#verify_phone, rendering head :no_content
+Completed 204 No Content in 109925ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 20:55:52 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (1.4ms)
+Completed 200 OK in 143ms (Views: 142.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 20:55:57 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"9555114655"}
+Completed 500 Internal Server Error in 5299ms (ActiveRecord: 0.0ms)
+
+
+  
+Twilio::REST::RestError (Unable to create record: The From phone number +14804626243 is not a valid, SMS-capable inbound phone number or short code for your account.):
+  
+app/controllers/twilios_controller.rb:17:in `send_verification_code'
+app/controllers/twilios_controller.rb:8:in `verify_phone'
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (1.0ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.9ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.2ms)
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (38.4ms)
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:03:31 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (0.8ms)
+Completed 200 OK in 59ms (Views: 57.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:03:41 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"9555114655"}
+  Rendering twilios/verify_phone.js.erb
+  Rendered twilios/_twilio_confirmation.html.erb (0.6ms)
+  Rendered twilios/verify_phone.js.erb (8.2ms)
+Completed 200 OK in 3652ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:04:50 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (1.3ms)
+Completed 200 OK in 70ms (Views: 69.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:06:23 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"9555114655"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `pry' for #<Binding:0x007f8880267270>
+Did you mean?  pretty_print
+               pretty_inspect
+               pretty_print_cycle
+               try):
+  
+app/controllers/twilios_controller.rb:14:in `send_verification_code'
+app/controllers/twilios_controller.rb:8:in `verify_phone'
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.0ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.1ms)
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (36.7ms)
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:06:43 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (0.8ms)
+Completed 200 OK in 62ms (Views: 61.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:06:47 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"9555114655"}
+  Rendering twilios/verify_phone.js.erb
+  Rendered twilios/_twilio_confirmation.html.erb (0.5ms)
+  Rendered twilios/verify_phone.js.erb (6.9ms)
+Completed 200 OK in 141477ms (Views: 18.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:25:59 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (1.4ms)
+Completed 200 OK in 78ms (Views: 77.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:26:04 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"9555114655"}
+  Rendering twilios/verify_phone.js.erb
+  Rendered twilios/_twilio_confirmation.html.erb (0.5ms)
+  Rendered twilios/verify_phone.js.erb (7.7ms)
+Completed 200 OK in 3886ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:26:22 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (2.0ms)
+Completed 200 OK in 92ms (Views: 90.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:26:50 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"8178072285"}
+Completed 500 Internal Server Error in 4184ms (ActiveRecord: 0.0ms)
+
+
+  
+Twilio::REST::RestError (Unable to create record: The number +918178072285 is unverified. Trial accounts cannot send messages to unverified numbers; verify +918178072285 at twilio.com/user/account/phone-numbers/verified, or purchase a Twilio number to send messages to unverified numbers.):
+  
+app/controllers/twilios_controller.rb:17:in `send_verification_code'
+app/controllers/twilios_controller.rb:8:in `verify_phone'
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.9ms)
+  Rendering /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.0ms)
+  Rendered /home/anand/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (22.2ms)
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:30:16 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (1.1ms)
+Completed 200 OK in 78ms (Views: 76.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:30:23 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"8178 072 285"}
+  Rendering twilios/verify_phone.js.erb
+  Rendered twilios/_twilio_confirmation.html.erb (0.5ms)
+  Rendered twilios/verify_phone.js.erb (7.2ms)
+Completed 200 OK in 3817ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:30:54 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (1.6ms)
+Completed 200 OK in 83ms (Views: 81.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:31:12 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"95551 14655"}
+  Rendering twilios/verify_phone.js.erb
+  Rendered twilios/_twilio_confirmation.html.erb (0.4ms)
+  Rendered twilios/verify_phone.js.erb (7.3ms)
+Completed 200 OK in 4118ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:31:53 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (1.8ms)
+Completed 200 OK in 75ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/twilios/verify_phone" for 127.0.0.1 at 2018-02-16 21:32:11 +0530
+Processing by TwiliosController#verify_phone as JS
+  Parameters: {"utf8"=>"✓", "phone_no"=>"8178 072 285"}
+  Rendering twilios/verify_phone.js.erb
+  Rendered twilios/_twilio_confirmation.html.erb (0.4ms)
+  Rendered twilios/verify_phone.js.erb (6.4ms)
+Completed 200 OK in 7443ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/twilios" for 127.0.0.1 at 2018-02-16 21:34:07 +0530
+Processing by TwiliosController#index as HTML
+  Rendering twilios/index.html.erb within layouts/twilio
+  Rendered twilios/index.html.erb within layouts/twilio (2.1ms)
+Completed 200 OK in 83ms (Views: 81.7ms | ActiveRecord: 0.0ms)
+
+
