@@ -63,6 +63,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def sign_in
+  end
+
+  def callback
+    session[:auth] = auth_hash
+    redirect_to '/'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

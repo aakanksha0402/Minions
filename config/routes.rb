@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :reviews
   resources :search, only: [:index]
   resources :authors
-  resources :books
+  resources :books do
+    collection do
+      get '/auth/:provider/callback', to: 'books#callback'
+    end
+  end
   resources :twilios do
   	collection do
   		post :verify_phone
