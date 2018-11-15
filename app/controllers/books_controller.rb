@@ -5,6 +5,14 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "index",
+        layout: "application.html.erb",
+        viewport_size: '1280x1024'
+      end
+    end
   end
 
   # GET /books/1

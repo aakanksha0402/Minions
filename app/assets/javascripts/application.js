@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require twitter/bootstrap
+//= require codelation_ui
 //= require underscore
 //= require search
 //= require token_field
