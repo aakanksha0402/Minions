@@ -1,3 +1,17 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// This will create a cards layout with two cards per row.
+// There will be a fixed margin of 1em between and around the cards.
+// The cards in each row will stretch to be the same height.
+.dashboard {
+  @include has-cards(2, 1em);
+  background-color: #ccc;
+
+  .card {
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+}

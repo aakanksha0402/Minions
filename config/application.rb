@@ -13,6 +13,9 @@ module Minions
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.assets.paths << "#{Rails.root}/app/assets/stylesheets/bootstrap.min.css"
+
+
     creds_file = File.join(Rails.root, 'config', 'secrets.json')
     creds = JSON.load(File.read(creds_file)).each do |key, value|
       ENV[key.to_s] = value
